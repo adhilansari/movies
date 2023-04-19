@@ -1,0 +1,30 @@
+<div class="bg-[#131b2e] rounded-lg h-full p-2 hover:scale-105 hover:shadow-xl  transition-transform duration-300 " [routerLink]="['/movie',movie.id,movie.media_type ]">
+  <figure class="mb-2">
+    <img src="{{ base_img }}original/{{ movie.poster_path }}" alt="" class="mx-auto h-52 w-36 md:h-60 md:w-44 lg:h-72 lg:w-52" />
+  </figure>
+  <div class=" rounded-lg p-4 bg-gradient-to-r from-indigo-950  to-gray-950 flex flex-col">
+    <div>
+      <h5 class="text-white text-2xl font-bold leading-none h-12 text-ellipsis overflow-hidden">
+        {{ movie.title || movie.name }}
+      </h5>
+      <span class="text-xs text-gray-400 leading-none">Rating-{{ movie.vote_average }}</span>
+    </div>
+    <div class="flex items-center relative">
+      <div class="text-lg text-white font-light">
+        {{ movie.first_air_date || movie.release_date }}
+      </div>
+        <div
+          class="text-sm h-12 w-12 flex justify-center items-center rounded-full text-white absolute bottom-1 right-1">
+          <p class="absolute top-[31%]">{{math.floor(movie.vote_average*10)}}%</p>
+          <svg class="rotate-[-90deg]" width="47px" height="47px" viewBox="0 0 100 100">
+            <circle cx="52.5" cy="52.5" r="50" fill="transparent"
+              [attr.stroke]="ratingcolor2(movie.vote_average*10)" [attr.stroke-dasharray]="314" stroke-width="9"
+              class="scale-[0.95]" />
+            <circle cx="52.5" cy="52.5" r="50" fill="transparent" [attr.stroke]="ratingcolor(movie.vote_average*10)"
+              [attr.stroke-dashoffset]="(3.14*(100-movie.vote_average*10))" [attr.stroke-dasharray]="314"
+              stroke-width="9" stroke-linecap="round" class="scale-[0.95]" />
+          </svg>
+        </div>
+    </div>
+  </div>
+</div>

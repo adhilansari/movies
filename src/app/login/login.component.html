@@ -1,0 +1,51 @@
+<section class="flex  items-center justify-center gradient-form h-[calc(100vh-65px)] overflow-auto ">
+  <div class="w-full h-fit p-10">
+    <div class="g-6 flex h-fit flex-wrap items-center justify-center dark:text-neutral-200">
+      <div class="flex justify-center w-full">
+
+        <div class="lg:w-6/12">
+          <div class="md:mx-6 rounded-xl text-slate-500 p-2 md:p-12 bg-gradient-to-r from-rose-100 to-teal-100">
+            <!--Logo-->
+            <div class="text-center">
+              <img class="mx-auto w-20" src="../../assets/play.png" alt="logo" />
+              <h4 class="mb-12 mt-4 pb-1 text-xl font-semibold">
+                Movies Now
+              </h4>
+            </div>
+
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <p class="mb-4">Please login to your account</p>
+              <!--Username input-->
+              <div class="relative mb-4" >
+                <input name="userName" formControlName="userName" type="text" class="w-full p-4 placeholder:text-slate-700 focus:outline-none ring-1  rounded-full"
+                  placeholder="User Name">
+
+              </div>
+
+              <!--Password input-->
+              <div class="relative mb-4" >
+                <input formControlName="password" type="password" class="w-full p-4 placeholder:text-slate-700 focus:outline-none ring-1  rounded-full"
+                  placeholder="Password">
+              </div>
+
+              <!--Submit button-->
+              <div class="mb-12 pb-1 pt-1 text-center">
+                <button mat-raised-button type="submit" class=" p-6 w-full rounded-full px-8 bg-indigo-950 text-white">Login</button>
+                <!--Forgot password link-->
+                <!-- <a href="#!">Forgot password?</a> -->
+              </div>
+
+              <!--Register button-->
+              <div class="flex items-center justify-between pb-6">
+                <p class="mb-0 mr-2">Don't have an account?</p>
+                <button mat-raised-button
+                  class="placeholder:text-slate-700 focus:outline-none ring-1 p-6 rounded-full">Register</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,1 +1,79 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+@layer components {
+
+  body {
+    @apply scroll-smooth
+  }
+
+  nav {
+    @apply fixed inset-x-0 z-30 py-4 transition duration-300
+  }
+}
+
+// ::-webkit-scrollbar {
+//   width: 4px;
+// }
+
+// ::-webkit-scrollbar-track {
+//   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+//   border-radius: 10px;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   border-radius: 10px;
+//   -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.986);
+// }
+
+::-webkit-scrollbar {
+  width: 0px;
+  // height: 5px;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
+}
+
+
+// ::-webkit-scrollbar-track
+// {
+// 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+// 	background: linear-gradient(109.6deg, rgb(36, 45, 57) 11.2%, rgb(16, 37, 60) 51.2%, rgb(0, 0, 0) 98.6%);
+
+// 	border-radius: 10px;
+// }
+
+// ::-webkit-scrollbar
+// {
+
+// 	width: thin;
+// 	background-color: #000000;
+// }
+
+// ::-webkit-scrollbar-thumb
+// {
+// 	border-radius: 10px;
+// 	background-image: -webkit-gradient(linear,
+// 									   left bottom,
+// 									   left top,
+// 									   color-stop(0.72, rgb(73,125,189)),
+// 									   color-stop(0.44, rgba(15, 12, 90, 0)),
+// 									   color-stop(0.86, #312e81));
+// }
+
+
+.material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

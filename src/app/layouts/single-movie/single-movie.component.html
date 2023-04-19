@@ -1,0 +1,63 @@
+
+<div class="bg-gray-950 text-white" *ngIf="movies | async as movie ">
+  <section class="text-text-color bg-primary-color pb-6 md:pb-9 lg:pb-12">
+    <div
+      class="container md:w-full lg:h-[640px] mx-auto flex pb-24 md:py-12 md:pb-16 md:pr-16 flex-col md:flex-row items-center md:items-start md:justify-end relative">
+
+      <div class="h-full w-full mb-10 md:mb-0 relative md:absolute md:inset-0">
+        <img class="md:hidden h-full w-full object-cover object-center relative " alt="hero"
+          src="{{ base_img }}original/{{ movie.backdrop_path }}">
+        <div class="md:hidden absolute top-[10%] left-[5%] h-[80%] "><img class="h-full w-full"
+            src="{{ base_img }}original/{{ movie.poster_path }}" alt=""></div>
+
+        <img class="hidden md:flex h-full w-full object-cover object-center relative rounded md:opacity-25" alt="hero"
+          src="{{ base_img }}original/{{ movie.backdrop_path }}">
+        <div class="absolute hidden md:flex top-[8%] left-[3%] h-[80%] lg:h-[85%] rounded-lg"><img
+            class="h-full w-full rounded-lg" src="{{ base_img }}original/{{ movie.poster_path }}" alt=""></div>
+
+      </div>
+      <div class="hidden md:flex h-12 md:w-[180%] lg:w-[800px] "></div>
+      <div
+        class="flex flex-col md:items-start lg:items-center lg:justify-center md:text-left lg:h-full lg:w-full items-center text-center relative ">
+        <div
+          class="flex items-center justify-around lg:justify-between lg:px-6 text-xl lg:text-4xl mb-4 font-medium text-text-color w-full ">
+          <p>{{movie.original_title}} <br> <span class="text-text2-color ">{{movie.release_date.slice(0,4)}}</span> </p>
+        </div>
+        <div class="flex items-center justify-around lg:justify-start lg:gap-6 w-full px-6 py-3 ">
+          <div class="flex flex-col lg:flex-row justify-center items-center gap-1 lg:gap-3">
+            <p class="hidden lg:block text-xl">User Score</p>
+            <div
+              class="text-xs md:text-sm h-12 w-12 md:h-11 md:w-11 lg:h-14 lg:w-14 flex justify-center items-center rounded-full text-white bg-primary-color relative">
+              <p class="absolute top-[30%] text-sm lg:text-base">
+                {{ math.floor(movie.vote_average * 10) }}%
+              </p>
+              <svg class="rotate-[-90deg] lg:h-[48px] lg:w-[48px]" width="47px" height="47px" viewBox="0 0 100 100">
+                <circle cx="52.5" cy="52.5" r="50" fill="transparent"
+                  [attr.stroke]="ratingcolor2(movie.vote_average * 10)" [attr.stroke-dasharray]="314" stroke-width="9"
+                  class="scale-[0.95]" />
+                <circle cx="52.5" cy="52.5" r="50" fill="transparent"
+                  [attr.stroke]="ratingcolor(movie.vote_average * 10)" [attr.stroke-dashoffset]="
+                    3.14 * (100 - movie.vote_average * 10)
+                  " [attr.stroke-dasharray]="314" stroke-width="9" stroke-linecap="round" class="scale-[0.95]" />
+              </svg>
+            </div>
+            <p class="text-sm md:text-base lg:hidden">User Score</p>
+          </div>
+          <span class="h-16 lg:h-16 lg:mx-5 w-[0.5px] bg-text2-color"></span>
+          <button class="flex p-2 rounded-md h-max lg:text-xl text-text-color ">
+            <span class="material-symbols-rounded">
+              play_arrow
+            </span>
+            <p>Trailer</p>
+          </button>
+        </div>
+        <p class="w-full mb-8 leading-relaxed px-6 text-sm lg:text-base font-light text-text2-color md:text-text-color">
+          {{movie.release_date}} | {{movie.original_language}}glish | {{movie.release_date}} <br> vote :
+          {{movie.vote_count}} | popularity : {{movie.popularity}} </p>
+        <h1 class="text-xl lg:text-2xl font-medium mb-2 w-full flex justify-start px-6">Overview</h1>
+        <p
+          class="mb-4 leading-relaxed px-6 text-start text-sm lg:text-lg font-light text-text2-color md:text-text-color ">
+          {{movie.overview}} </p>
+      </div>
+    </div>
+  </section>

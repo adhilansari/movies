@@ -1,0 +1,57 @@
+<ng-container *ngIf="{
+  time: $time | async,
+  category: $category | async,
+  show:$show|async
+} as filter ">
+
+  <div class="flex w-full mx-auto flex-col px-4" style="font-family: 'Muli', sans-serif;">
+
+    <div class="w-full pl-5 lg:pl-2 ">
+      <h1 class="text-3xl lg:text-4xl text-white font-extrabold">
+        Trending on {{filter.category | uppercase}}
+      </h1>
+    </div>
+
+    <div *ngIf="filter.category && filter.show && filter.time" class="flex flex-wrap gap-2 md:gap-4 my-6">
+
+      <div class="flex w-32 md:w-72 p-1  bg-white/20 rounded-full">
+        <button (click)="changeShow(filter.show)"
+          class="cursor-pointer relative w-full text-text-color flex items-center justify-between gap-3 md:gap-6 px-1 py-2 md:px-6 md:py-1 rounded-3xl">
+          <span [ngClass]="{'translate-x-[56px] md:translate-x-[115px]' : Switch1,'left-0':!Switch1}"
+            class="absolute w-1/2 h-full left-0 rounded-3xl bg-yellow-600 duration-500"></span>
+          <span class="relative pl-[1px] md:ml-3 text-xs md:text-base">Trending</span>
+          <span class="relative pr-1 md:mr-4 text-xs md:text-base">Popular</span>
+        </button>
+      </div>
+
+      <div class="flex w-20 md:w-52 p-1 gap-3 bg-white/20 rounded-full">
+        <button (click)="changeCategory(filter.category)"
+          class="cursor-pointer relative w-full text-text-color flex items-center justify-between gap-6 px-2 py-2 md:px-6 md:py-1 rounded-3xl duration-1000">
+          <span [ngClass]="{'translate-x-[28px] md:translate-x-[75px]' : Switch2,'left-0':!Switch2}"
+            class="absolute w-1/2 h-full left-0 rounded-3xl bg-yellow-600 duration-500"></span>
+            <span class="relative py-1 pr-1 md:mr-4 text-xs md:text-base">TV</span>
+          <span class="relative py-1 ml-[2px] md:ml-4 text-xs md:text-base">Movie</span>
+        </button>
+      </div>
+
+      <div *ngIf="filter.show == 'popular' " class="flex w-auto  p-1  gap-3 bg-white/20 rounded-full">
+        <button (click)="changeTime(filter.time)"
+          class="cursor-pointer relative w-full text-text-color flex items-center justify-between gap-6 px-2 py-2 md:px-6 md:py-1 rounded-3xl duration-1000">
+          <span [ngClass]="{'translate-x-[75px] md:translate-x-[95px]' : Switch3,'left-0':!Switch3}"
+            class="absolute w-1/2 h-full left-0 rounded-3xl bg-yellow-600 duration-500"></span>
+          <span class="relative px-2 py-1 ml-2 md:ml-3 text-xs md:text-base">Today</span>
+          <span class="relative px-2 py-1 md:ml-3 text-xs md:text-base">This Week</span>
+        </button>
+      </div>
+
+    </div>
+    <div class="flex overflow-x-scroll ">
+      <div class="flex  p-4" *ngFor="let item of Tmovies|async">
+        <div class="w-[200px] md:w-[300px] ">
+          <app-movie-card [movie]="item"></app-movie-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ng-container>
